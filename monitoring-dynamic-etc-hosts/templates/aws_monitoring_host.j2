@@ -1,0 +1,17 @@
+# THIS FILE IS CONTROLLED BY ANSIBLE
+# any local modifications will be overwritten!
+#
+
+127.0.0.1 localhost
+
+{% for server in groups['tag_Type_awsservers'] %}
+{{ hostvars[server]['ec2_private_ip_address'] }} {{ hostvars[server]['ec2_private_dns_name'] }}
+{% endfor %}
+
+# The following lines are desirable for IPv6 capable hosts
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts

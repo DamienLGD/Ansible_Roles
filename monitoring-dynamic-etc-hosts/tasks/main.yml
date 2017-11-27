@@ -1,0 +1,18 @@
+---
+# tasks file for shinken-dynamic-etc-hosts
+  - name: Copy /etc/hosts configuration.
+    template:
+        src: "{{ hosts_template_env }}"
+        dest: /etc/hosts
+        backup: yes
+        owner: root
+        group: root
+        mode: 0644
+  - replace:
+      dest: /etc/hosts
+      regexp: '\.ec2\.internal'
+      replace: ''
+      owner: root
+      group: root
+      mode: 0644
+
